@@ -3,7 +3,6 @@ import numpy as np
 import random
 from datetime import datetime, timedelta
 
-# Configuration
 N_CUSTOMERS = 1000
 N_TRANSACTIONS = 20000
 FRAUD_RATE = 0.10
