@@ -14,14 +14,12 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 
-
 def load_data(filepath):
     """Loads and performs initial timestamp conversion."""
     print(f"Loading data from {filepath}...")
     df = pd.read_csv(filepath)
     df['timestamp'] = pd.to_datetime(df['timestamp'])
     return df
-
 
 def feature_engineering(df):
     """Creates new features from the timestamp."""
@@ -31,7 +29,6 @@ def feature_engineering(df):
     df_feat['day_of_week'] = df_feat['timestamp'].dt.dayofweek
     df_feat = df_feat.drop(['timestamp', 'transaction_id', 'customer_id'], axis=1)
     return df_feat
-
 
 def plot_eda(df):
     """Generates and saves EDA plots using Matplotlib and Seaborn."""
