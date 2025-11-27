@@ -1,10 +1,10 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
-import traceback  # Import traceback for better error logging
+import traceback  
 
 
-@st.cache_data(ttl=3600)  # Cache data for 1 hour
+@st.cache_data(ttl=3600)  
 def load_data(ticker, start_date, end_date):
     """
     Downloads historical cryptocurrency data from Yahoo Finance.
@@ -32,12 +32,7 @@ def load_data(ticker, start_date, end_date):
         if 'Daily Return' in data.columns:
             data['Volatility'] = data['Daily Return'].rolling(window=30).std()
 
-        # --- FAULTY LOGIC REMOVED ---
-        # We no longer need to check for columns or run dropna.
-        # Plotting libraries will handle the NaN values gracefully.
-
         if data.empty:
-            # This check is still useful if yf returned 0 rows
             st.warning("Downloaded data is empty. Please check ticker and date range.")
             return pd.DataFrame()
 
